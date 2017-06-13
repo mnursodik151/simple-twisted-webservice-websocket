@@ -1,0 +1,22 @@
+<head>
+	<title>Simple Websocket Client</title>
+	<script type="text/javascript">
+		ws = new WebSocket('ws://localhost:8002');
+
+		ws.onmessage = function(evt){
+			//alert(evt.data)
+      console.log(evt.data)
+		}
+
+		function kirimData(){
+			topik = document.getElementById('topik').value;
+      var data = JSON.stringify({"tipe": "SUB", "topik": topik});
+			ws.send(data);
+		}
+	</script>
+</head>
+
+<body>
+	<input type="text" name="topik" id="topik">
+	<button onclick="kirimData()">Kirim</button>
+</body>
